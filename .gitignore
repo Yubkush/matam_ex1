@@ -1,3 +1,4 @@
 .vscode
 build
-CMakeLists.txt
+github_token
+main.c

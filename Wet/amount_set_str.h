@@ -225,11 +225,24 @@ char* asGetFirst(AmountSet set);
 char* asGetNext(AmountSet set);
 
 /**
+ * Compares between two amount sets and checks if they are equal.
+ * 
+ * @param set1 - First set to compare 
+ * @param set2 - Second set to compare
+ * @param result - Pointer that stores the comaparison result.
+ * true if the sets are equal and false if they are not.
+ * @return 
+ * AS_NULL_ARGUMENT if one or both of the supplied sets are NULL
+ * AS_SUCCESS if the comparison process was succesful 
+ */
+AmountSetResult asCompare(AmountSet set1, AmountSet set2, bool *result);
+
+/**
  * Macro for iterating over a set.
  * Declares a new iterator for the loop.
  */
 #define AS_FOREACH(type, iterator, set)          \
-    for(type iterator = (type) asGetFirst(set) ; \
+    for(type iterator = (type)asGetFirst(set) ; \
         iterator ;                               \
         iterator = asGetNext(set))
 
