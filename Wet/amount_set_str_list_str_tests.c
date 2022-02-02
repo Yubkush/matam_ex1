@@ -155,7 +155,7 @@ bool testListRemoveInsert()
     listRemoveElement(demo, name);
     name = "a";
     listInsertLexicographic(demo, name);
-    char* element_name = malloc(sizeof(*element_name));
+    char* element_name = malloc(strlen(name)+1);
     if(element_name == NULL){
         return false;
     }
@@ -191,25 +191,29 @@ bool testListSetAmountOfElementEmpty()
 bool testListReturnAmountOfElementNotEmptyList()
 {
     List demo = listCreateDemo();
+    bool result = listReturnAmountOfElement(listGetNext(demo)) == DEMO_AMOUNT;
     listDestroy(demo);
-    return listReturnAmountOfElement(listGetNext(demo)) == DEMO_AMOUNT;
+    return result;
 }
 bool testListReturnAmountOfElementEmptyList()
 {
     List demo = listCreate();
+    bool result = listReturnAmountOfElement(listGetNext(demo)) == NULL_POINTER;
     listDestroy(demo);
-    return listReturnAmountOfElement(listGetNext(demo)) == NULL_POINTER;
+    return result;
 }
 
 bool testListReturnNameOfElementNotEmptyList()
 {
     List demo = listCreateDemo();
+    bool result = strcmp(listReturnNameOfElement(listGetNext(demo)), "bread") == 0;
     listDestroy(demo);
-    return strcmp(listReturnNameOfElement(listGetNext(demo)), "bread") == 0;
+    return result;
 }
 bool testListReturnNameOfElementEmptyList()
 {
     List demo = listCreate();
+    bool result = listReturnNameOfElement(listGetNext(demo)) == NULL;
     listDestroy(demo);
-    return listReturnNameOfElement(listGetNext(demo)) == NULL;
+    return result;
 }
